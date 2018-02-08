@@ -33,11 +33,11 @@ class RumahSakitController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'expression'=>'$user->isAdmin() || $user->isAdminRumkit()',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'expression'=>'$user->isAdmin() || $user->isAdminRumkit()',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -51,6 +51,7 @@ class RumahSakitController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$this->layout = 'layout-admin';
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -69,20 +70,40 @@ class RumahSakitController extends Controller
 	 */
 	public function actionCreate()
 	{
+		$this->layout = 'layout-admin';
 		$model=new RumahSakit;
+		$model2=new User;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['RumahSakit']))
+		if(isset($_POST['RumahSakit'], $_POST['User']))
 		{
 			$model->attributes=$_POST['RumahSakit'];
-			if($model->save())
+			$image = CUploadedFile::getInstance($model,'image');
+			if($image == null){
+				echo "-";
+			}else{
+				$nm_file = md5($model->id).'rumkit-.'.$image->getExtensionName();
+				$model->image = $nm_file;
+			}
+			
+
+			$model2->attributes=$_POST['User'];
+			$model2->level = 2;
+
+			if($model2->save())
+			{
+				$model->id_user = $model2->id;
+				$model->save(false);
+				$image->saveAs(Yii::app()->basePath. '/../images/rumah-sakit/' . $nm_file);
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'model2'=>$model2,
 		));
 	}
 
@@ -93,20 +114,44 @@ class RumahSakitController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		$this->layout = 'layout-admin';
 		$model=$this->loadModel($id);
+		$model2=User::model()->findByPk($model->id_user);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		// $model=new RumahSakit;
+		// $model2=new User;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['RumahSakit']))
+		if(isset($_POST['RumahSakit'], $_POST['User']))
 		{
 			$model->attributes=$_POST['RumahSakit'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+			$image = CUploadedFile::getInstance($model,'image');
+			if($image == null){
+				echo "-";
+			}else{
+				$nm_file = md5($model->id).'rumkit-.'.$image->getExtensionName();
+				$model->image = $nm_file;
+			}
+			
 
+			$model2->attributes=$_POST['User'];
+			$model2->level = 2;
+
+			if($model2->save())
+			{
+				$model->id_user = $model2->id;
+				$model->save(false);
+				$image->saveAs(Yii::app()->basePath. '/../images/rumah-sakit/' . $nm_file);
+				$this->redirect(array('view','id'=>$model->id));
+			}
+		}
 		$this->render('update',array(
 			'model'=>$model,
+			'model2'=>$model2,
 		));
 	}
 
@@ -140,13 +185,35 @@ class RumahSakitController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new RumahSakit('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['RumahSakit']))
-			$model->attributes=$_GET['RumahSakit'];
+		$this->layout = 'layout-admin';
+		$rumkit = "";
+		$iduser = Yii::app()->user->getId();
+		$query = "SELECT rumah_sakit.*, user.id as iduser FROM rumah_sakit JOIN user ON user.id = rumah_sakit.id_user WHERE rumah_sakit.id_user = '$iduser'";
+		$model = Yii::app()->db->createCommand($query)->queryAll();
+		//$model = RumahSakit::model()->findAll();
+		foreach ($model as $key => $value) {
+			$no = $key+1;
+			$rumkit .= " <tr>
+							<td>$no</td>
+                            <td>".$value['nama_rumah_sakit']."</td>
+                            <td>".$value['alamat']."</td>
+                            <td>".$value['no_tlp']."</td>
+                            <td>
+                            ".CHtml::image(Yii::app()->request->baseUrl. '/images/rumah-sakit/'.$value['image'],$value['nama_rumah_sakit'], array('width'=>50,'height'=>50))."
+                            </td>
 
+                            <td>
+	                            <div class='pul-right'>
+		                            ".CHtml::link('<i class="fa fa-eye"></i>',array('rumahSakit/view','id'=>$value['id']),array('class'=>'btn btn-xs btn-info margin-inline','title'=>'Lihat'))."
+		                            ".CHtml::link('<i class="fa fa-trash"></i>',array('rumahSakit/delete','id'=>$value['id']),array('class'=>'btn btn-xs btn-danger margin-inline','title'=>'Hapus'))."
+		                            ".CHtml::link('<i class="fa fa-pencil"></i>',array('rumahSakit/update','id'=>$value['id']),array('class'=>'btn btn-xs btn-success margin-inline','title'=>'Edit'))."
+	                            </div>
+                            </td>
+                            
+                        </tr>";
+		}
 		$this->render('admin',array(
-			'model'=>$model,
+			'rumkit'=>$rumkit,
 		));
 	}
 

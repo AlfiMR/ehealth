@@ -118,10 +118,10 @@
       <div class="header-nav-wrapper">
         <div class="container">
           <nav id="menuzord-right" class="default no-bg">
-            <a class="menuzord-brand switchable-logo pull-left flip mb-15" href="index-mp-layout1.html">
-              <img class="logo-default" src="images/logo-ehealth-2.png" alt="">
-              <img class="logo-scrolled-to-fixed" src="images/logo-ehealth.png" alt="">
-            </a>
+            
+            <?php echo CHtml::link(
+            	'<img class="logo-default" src='.Yii::app()->request->baseUrl.'/images/logo-ehealth-2.png>
+               	<img class="logo-scrolled-to-fixed" src='.Yii::app()->request->baseUrl.'/images/logo-ehealth.png>',array('site/'),array('class'=>'menuzord-brand switchable-logo pull-left flip mb-15')) ?>
             <div class="pull-right mb-sm-15">
             </div>
           </nav>

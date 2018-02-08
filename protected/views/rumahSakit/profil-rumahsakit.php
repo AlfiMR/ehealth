@@ -5,7 +5,9 @@
         <!-- START REVOLUTION SLIDER 5.0.7 -->
       <?php $bg = RumahSakit::model()->findAll("id = $idrumkit"); ?>
       <?php foreach ($bg as $b): ?>
-      <section id="home" class="divider layer-overlay overlay-theme-colored2-7 parallax" data-stellar-background-ratio="0.5" data-bg-img="images/rumah-sakit/<?php echo $b->image; ?>">
+      <?php echo 
+      '<section id="home" class="divider layer-overlay overlay-theme-colored2-7 parallax" data-stellar-background-ratio="0.5" data-bg-img='.Yii::app()->request->baseUrl.'/images/rumah-sakit/'.$b->image.'>';
+      ?>
       <?php endforeach; ?>
       <div class="display-table">
         <div class="display-table-cell">
@@ -90,25 +92,29 @@
               <div class="title-icon">
                 <img class="mb-10" src="images/title-icon-white.png" alt="">
               </div>
-              <p class="text-white">Silakan Pilih Poli/Klinik</p>
+              <p class="text-white">Silahkan Pilih Poli/Klinik</p>
             </div>
           </div>
         </div>
 
     <?php
-      $poli = PoliKlinik::model()->findAll();
+      $poli = PoliKlinik::model()->findAll("id_rumkit = $idrumkit");
     ?>
 
     <div class="section-content">
       <div class="row features-style1">
       <?php foreach ($poli as $key => $value): ?>
+        <?php $jumlah = PendaftaranRumkit::model()->findAll("id_poli_klinik = $value->id") ?>
         <div class="col-sm-6 col-md-3">
           <div class="icon-box p-30 bg-white mb-30 border-3px">
-            <?php echo CHtml::image('images/poli/'.$value->image, 'DORE'); ?>
+            <?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/poli/'.$value->image, 'DORE'); ?>
               <div class="features-details">
                 <h3><?php echo $value->nama_poli_klinik; ?></h3>
               </div>
               <?php echo CHtml::link('Daftar',array('pendaftaranRumkit/create','idrumkit'=>$idrumkit,'idpoli'=>$value->id),array('class'=>'btn btn-flat btn-sm btn-theme-colored mt-15  text-theme-color-2')); ?>
+              <div class="pull-right">
+              <?php $hariini = date('Y-m-d'); ?>
+              <span class="btn btn-flat btn-sm btn-danger mt-15  text-theme-color-2"><?php echo PendaftaranRumkit::model()->count("id_poli_klinik = $value->id && id_rumah_sakit = $value->id_rumkit && tgl_pendaftaran = '$hariini'"); ?></span></div>
           </div>
         </div>
         <?php endforeach; ?>
@@ -148,7 +154,7 @@
                     </div>
                     <div class="content mt-20">
                       <div class="thumb pull-right flip">
-                      <?php echo CHtml::image('images/testimoni/'.$value1->photo,'', array('class' => 'img-circle', 'width'=>50, 'height'=>50)); ?>
+                      <?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/testimoni/'.$value1->photo,'', array('class' => 'img-circle', 'width'=>50, 'height'=>50)); ?>
                       </div>
                       <div class="text-right flip pull-right flip mr-20 mt-10">
                         <h5 class="author text-theme-colored"><?php echo $value1->nama; ?></h5>

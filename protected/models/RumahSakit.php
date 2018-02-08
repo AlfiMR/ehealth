@@ -32,9 +32,10 @@ class RumahSakit extends CActiveRecord
 			array('nama_rumah_sakit', 'length', 'max'=>255),
 			array('no_tlp', 'length', 'max'=>15),
 			array('image', 'length', 'max'=>50),
+			array('image','file','types'=>'jpg, png, bmp, gif'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nama_rumah_sakit, alamat, no_tlp, image', 'safe', 'on'=>'search'),
+			array('id, nama_rumah_sakit, alamat, no_tlp, image, id_user', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,6 +61,7 @@ class RumahSakit extends CActiveRecord
 			'alamat' => 'Alamat',
 			'no_tlp' => 'No Tlp',
 			'image' => 'Image',
+			'id_user' => 'Id User',
 		);
 	}
 
@@ -86,6 +88,7 @@ class RumahSakit extends CActiveRecord
 		$criteria->compare('alamat',$this->alamat,true);
 		$criteria->compare('no_tlp',$this->no_tlp,true);
 		$criteria->compare('image',$this->image,true);
+		$criteria->compare('id_user',$this->id_user);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

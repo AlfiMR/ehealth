@@ -164,5 +164,24 @@
 
 <script src="<?php echo Yii::app()->baseUrl; ?> /template/js/revolution-slider/js/extensions/revolution.extension.video.min.js"></script>
 
+<script>
+
+// Date Picker
+$(function(){
+$('#datepicker').datepicker({
+    startDate: '-0',
+    autoclose: true,
+    format: 'yyyy-mm-dd',
+    minDate: 0,
+    todayHighlight: true
+    //endDate: '+2d'
+}).on('changeDate', function(ev){
+    $('#sDate1').text($('#datepicker').data('date'));
+    $('#datepicker').datepicker('hide');
+});
+})
+        
+</script>
+
 </body>
 </html>

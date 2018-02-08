@@ -4,4 +4,4 @@
 ?>
 
 
-<?php $this->renderPartial('_form', array('model'=>$model,'model2'=>$model2)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'model2'=>$model2,'idrumkit'=>$idrumkit)); ?>

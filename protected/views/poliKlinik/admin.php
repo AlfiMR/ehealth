@@ -1,54 +1,24 @@
-<?php
-/* @var $this PoliKlinikController */
-/* @var $model PoliKlinik */
-
-$this->breadcrumbs=array(
-	'Poli Kliniks'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List PoliKlinik', 'url'=>array('index')),
-	array('label'=>'Create PoliKlinik', 'url'=>array('create')),
-);
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#poli-klinik-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
-?>
-
-<h1>Manage Poli Kliniks</h1>
-
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
-
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'poli-klinik-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'id',
-		'nama_poli_klinik',
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
-)); ?>
+<div class="col-sm-12">
+    <div class="white-box">
+        <h3 class="box-title m-b-0">Kelola Poli/Klinik</h3>
+        <center>
+        <?php echo CHtml::link('<i class="ti ti-plus"></i> Tambah Data',array('poliklinik/create'),array('class'=>'btn btn-success')); ?>
+        </center>
+        
+        <div class="table-responsive">
+            <table id="myTable" class="table table-striped">
+                <thead>
+                    <tr>
+                    	<th>No</th>
+                        <th>Nama Poli/Klinik</th>
+                        <th>Image</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php echo $poli; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

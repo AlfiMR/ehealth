@@ -85,6 +85,7 @@ class PendaftaranRumkit extends CActiveRecord
 		$criteria->compare('id_poli_klinik',$this->id_poli_klinik);
 		$criteria->compare('id_pasien',$this->id_pasien);
 		$criteria->compare('tgl_pendaftaran',$this->tgl_pendaftaran,true);
+		$criteria->compare('no_antrian',$this->no_antrian,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -29,6 +29,21 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
+		if(Yii::app()->user->isAdmin())
+		{
+			$this->redirect(array('user/admin'));
+			//$this->render('index');
+		}
+		else if(Yii::app()->user->isAdminRumkit())
+		{
+			$this->redirect(array('rumahSakit/admin'));
+			//$this->render('index');
+		}
+		else if(Yii::app()->user->isAdminPuskesmas())
+		{
+			$this->redirect(array('puskesmas/admin'));
+			//$this->render('index');
+		}
 		$this->render('index');
 	}
 
@@ -77,6 +92,7 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
+		$this->layout = "null";
 		$model=new LoginForm;
 
 		// if it is ajax validation request
@@ -104,6 +120,6 @@ class SiteController extends Controller
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
-		$this->redirect(Yii::app()->homeUrl);
+		$this->redirect('site');
 	}
 }

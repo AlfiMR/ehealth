@@ -33,7 +33,7 @@ class PendaftaranRumkitController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'users'=>array('*'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
@@ -51,8 +51,16 @@ class PendaftaranRumkitController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$this->layout = 'layout-form-pasien';
+		$model = PendaftaranRumkit::model()->findByPk($id);
+		$model2 = Pasien::model()->find("id = $model->id_pasien");
+		$rumkit = RumahSakit::model()->find("id = $model->id_rumah_sakit");
+		$poli = PoliKlinik::model()->find("id = $model->id_poli_klinik");
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'model2'=>$model2,
+			'rumkit' => $rumkit,
+			'poli' => $poli,
 		));
 	}
 
@@ -74,15 +82,34 @@ class PendaftaranRumkitController extends Controller
 			$model->attributes=$_POST['PendaftaranRumkit'];
 			$model2->attributes=$_POST['Pasien'];
 
+			$image = CUploadedFile::getInstance($model2,'image');
+			if($image == null){
+				echo "-";
+			}else{
+				$nm_file = md5($model->id).'rumkit-.'.$image->getExtensionName();
+				$model2->image = $nm_file;
+			}
+
 			$model->id_poli_klinik = $idpoli;
 			$model->id_rumah_sakit = $idrumkit;
+
+			//untuk generate nomor antrian
+			$hariini = $model->tgl_pendaftaran;
+			$antrian = PendaftaranRumkit::model()->find("tgl_pendaftaran = '$hariini' && id_poli_klinik = '$idpoli' && id_rumah_sakit = '$idrumkit' order by id desc");
+				if(empty($antrian))
+				{
+					$model->no_antrian = 1;
+				}else{
+					$model->no_antrian = $antrian->no_antrian + 1;
+				}
 
 
 			if($model2->save(false))
 			{
 				$model->id_pasien = $model2->id;
 				$model2->type_pasien = 'penduduk';
-				$model->save(false);
+				$image->saveAs(Yii::app()->basePath. '/../images/pasien/' . $nm_file);
+				$model->save();
 				$this->redirect(array('view','id'=>$model->id));
 			}
 
@@ -91,6 +118,7 @@ class PendaftaranRumkitController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 			'model2'=>$model2,
+			'idrumkit' => $idrumkit,
 		));
 	}
 

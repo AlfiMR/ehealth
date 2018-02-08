@@ -4,8 +4,8 @@
         <div class="section-title mb-40">
           <div class="row">
             <div class="col-md-5 col-md-offset-4 text-center">              
-              <h3 class="text-uppercase font-weight-600 font-36 line-bottom-centered mt-0">Silakan Pilih <span class="text-theme-colored2">Rumah Sakit</span></h3>
-              <p class="text-gray-dimgray">Untuk melakukan registrasi atau pendaftaran silakan pilih rumah sakit terlebih dahulu.</p>
+              <h3 class="text-uppercase font-weight-600 font-36 line-bottom-centered mt-0">Silahkan Pilih <span class="text-theme-colored2">Rumah Sakit</span></h3>
+              <p class="text-gray-dimgray">Untuk melakukan registrasi atau pendaftaran Silahkan pilih rumah sakit terlebih dahulu.</p>
             </div>
           </div>
         </div>
@@ -39,8 +39,8 @@
         <div class="section-title mb-40">
           <div class="row">
             <div class="col-md-5 col-md-offset-4 text-center">              
-              <h3 class="text-uppercase font-weight-600 font-36 line-bottom-centered mt-0">Silakan Pilih <span class="text-theme-colored2">Puskesmas</span></h3>
-              <p class="text-gray-dimgray">Untuk melakukan registrasi atau pendaftaran silakan pilih Puskesmas terlebih dahulu.</p>
+              <h3 class="text-uppercase font-weight-600 font-36 line-bottom-centered mt-0">Silahkan Pilih <span class="text-theme-colored2">Puskesmas</span></h3>
+              <p class="text-gray-dimgray">Untuk melakukan registrasi atau pendaftaran Silahkan pilih Puskesmas terlebih dahulu.</p>
             </div>
           </div>
         </div>

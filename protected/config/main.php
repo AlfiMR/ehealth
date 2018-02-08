@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
+	'timeZone' => 'Asia/Jakarta',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -36,6 +37,7 @@ return array(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+			'class'=>'application.components.EWebUser',
 		),
 
 		// uncomment the following to enable URLs in path-format
@@ -49,6 +51,26 @@ return array(
 			),
 		),
 		*/
+		'urlManager'=>array(
+			'showScriptName'=>false,
+			'caseSensitive'=>false,
+			'urlFormat'=>'path',
+			'rules'=>array(
+				''=>'site/index',
+				'<action:(login|logout|about)>' => 'site/<action>',
+				//'rumahSakit/admin<slug>' => 'rumahSakit/admin',
+				'rumahSakit/' => 'rumahSakit/admin',
+				'puskesmas/' => 'puskesmas/admin',
+				'poliKlinik/' => 'poliKlinik/admin',
+				'User/' => 'user/admin',
+				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+
+				// 'profil'=>'rumahSakit/profil',
+				// 'profil/<id:\d+>'=>'rumahSakit/profil',
+			),
+		),
 
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),

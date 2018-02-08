@@ -33,11 +33,11 @@ class PuskesmasController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'expression'=>'$user->isAdmin()',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'expression'=>'$user->isAdmin()',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -133,13 +133,32 @@ class PuskesmasController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Puskesmas('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Puskesmas']))
-			$model->attributes=$_GET['Puskesmas'];
+		$this->layout = 'layout-admin';
+		$puskesmas = "";
+		$model = Puskesmas::model()->findAll();
+		foreach ($model as $key => $value) {
+			$no = $key+1;
+			$puskesmas .= " <tr>
+							<td>$no</td>
+                            <td>$value->nama_puskesmas</td>
+                            <td>$value->alamat</td>
+                            <td>$value->no_tlp</td>
+                            <td>
+                            ".CHtml::image(Yii::app()->request->baseUrl. '/images/puskesmas/'.$value->image,"$value->nama_puskesmas", array('width'=>50,'height'=>50))."
+                            </td>
 
+                            <td>
+	                            <div class='pul-right'>
+		                            ".CHtml::link('<i class="fa fa-eye"></i>',array('puskesmas/view','id'=>$value->id),array('class'=>'btn btn-xs btn-info margin-inline','title'=>'Lihat'))."
+		                            ".CHtml::link('<i class="fa fa-trash"></i>',array('puskesmas/delete','id'=>$value->id),array('class'=>'btn btn-xs btn-danger margin-inline','title'=>'Hapus'))."
+		                            ".CHtml::link('<i class="fa fa-pencil"></i>',array('puskesmas/update','id'=>$value->id),array('class'=>'btn btn-xs btn-success margin-inline','title'=>'Edit'))."
+	                            </div>
+                            </td>
+                            
+                        </tr>";
+		}
 		$this->render('admin',array(
-			'model'=>$model,
+			'puskesmas'=>$puskesmas,
 		));
 	}
 

@@ -28,9 +28,10 @@ class PoliKlinik extends CActiveRecord
 			array('nama_poli_klinik, image', 'required'),
 			array('nama_poli_klinik', 'length', 'max'=>255),
 			array('image', 'length', 'max'=>50),
+			array('image','file','types'=>'jpg, png, bmp, gif'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nama_poli_klinik', 'safe', 'on'=>'search'),
+			array('id, nama_poli_klinik, id_rumkit', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,6 +55,7 @@ class PoliKlinik extends CActiveRecord
 			'id' => 'ID',
 			'nama_poli_klinik' => 'Nama Poli Klinik',
 			'image' => 'Image',
+			'id_rumkit' => 'Id Rumah Sakit',
 		);
 	}
 
@@ -78,6 +80,7 @@ class PoliKlinik extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nama_poli_klinik',$this->nama_poli_klinik,true);
 		$criteria->compare('image',$this->image,true);
+		$criteria->compare('id_rumkit',$this->id_rumkit);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

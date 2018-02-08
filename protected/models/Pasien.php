@@ -30,14 +30,15 @@ class Pasien extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nik, type_pasien, nama_pasien, alamat, email, no_hp', 'required'),
+			array('nik, type_pasien, nama_pasien, alamat, email, no_hp, image', 'required'),
 			array('nik', 'numerical', 'integerOnly'=>true),
 			array('type_pasien', 'length', 'max'=>20),
 			array('nama_pasien, email', 'length', 'max'=>50),
 			array('no_hp', 'length', 'max'=>15),
+			array('image','file','types'=>'jpg, png, bmp, gif'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nik, type_pasien, nama_pasien, alamat, email, no_hp', 'safe', 'on'=>'search'),
+			array('id, nik, type_pasien, nama_pasien, alamat, email, no_hp, image', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,6 +66,7 @@ class Pasien extends CActiveRecord
 			'alamat' => 'Alamat',
 			'email' => 'Email',
 			'no_hp' => 'No Hp',
+			'image' => 'Image',
 		);
 	}
 
@@ -93,6 +95,7 @@ class Pasien extends CActiveRecord
 		$criteria->compare('alamat',$this->alamat,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('no_hp',$this->no_hp,true);
+		$criteria->compare('image',$this->image,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
