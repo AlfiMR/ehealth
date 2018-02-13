@@ -41266,3 +41266,159 @@ Stack trace:
 REQUEST_URI=/e-health/sweet-alert/sweet-alert.min.js
 HTTP_REFERER=http://localhost/e-health/rumahSakit
 ---
+2018/02/13 14:52:41 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request " /template/css/menuzord-megamenu.css". in E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController(' /template/css/...')
+#1 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-health%20/template/css/menuzord-megamenu.css
+HTTP_REFERER=http://localhost/e-health/
+---
+2018/02/13 14:52:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "ajax-load/bootstrap-parent-modal.html". in E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('ajax-load/boots...')
+#1 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-health/ajax-load/bootstrap-parent-modal.html
+HTTP_REFERER=http://localhost/e-health/
+---
+2018/02/13 14:52:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "template/images/favicon.png". in E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('template/images...')
+#1 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-health/template/images/favicon.png
+---
+2018/02/13 14:52:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "template/images/apple-touch-icon-144x144.png". in E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('template/images...')
+#1 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-health/template/images/apple-touch-icon-144x144.png
+---
+2018/02/13 14:52:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request " /template/css/menuzord-megamenu.css". in E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController(' /template/css/...')
+#1 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-health%20/template/css/menuzord-megamenu.css
+HTTP_REFERER=http://localhost/e-health/rumahSakit/rumahSakit?idrumkit=1
+---
+2018/02/13 14:52:49 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "images". in E:\xampp\htdocs\Yiix\framework\web\CController.php:483
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CController.php(270): CController->missingAction('images')
+#1 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(282): CController->run('images')
+#2 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahSakit/imag...')
+#3 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-health/rumahSakit/images/title-icon-white.png
+HTTP_REFERER=http://localhost/e-health/rumahSakit/rumahSakit?idrumkit=1
+---
+2018/02/13 14:52:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/testimoni/6.jpg". in E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('images/testimon...')
+#1 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-health/images/testimoni/6.jpg
+HTTP_REFERER=http://localhost/e-health/rumahSakit/rumahSakit?idrumkit=1
+---
+2018/02/13 14:52:49 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "images". in E:\xampp\htdocs\Yiix\framework\web\CController.php:483
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CController.php(270): CController->missingAction('images')
+#1 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(282): CController->run('images')
+#2 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahSakit/imag...')
+#3 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-health/rumahSakit/images/logo-wide-white.png
+HTTP_REFERER=http://localhost/e-health/rumahSakit/rumahSakit?idrumkit=1
+---
+2018/02/13 14:52:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/testimoni/6.jpg". in E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('images/testimon...')
+#1 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-health/images/testimoni/6.jpg
+HTTP_REFERER=http://localhost/e-health/rumahSakit/rumahSakit?idrumkit=1
+---
+2018/02/13 14:52:49 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "images". in E:\xampp\htdocs\Yiix\framework\web\CController.php:483
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CController.php(270): CController->missingAction('images')
+#1 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(282): CController->run('images')
+#2 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahSakit/imag...')
+#3 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-health/rumahSakit/images/logo-wide-white.png
+HTTP_REFERER=http://localhost/e-health/rumahSakit/rumahSakit?idrumkit=1
+---
+2018/02/13 14:52:49 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "images". in E:\xampp\htdocs\Yiix\framework\web\CController.php:483
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CController.php(270): CController->missingAction('images')
+#1 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(282): CController->run('images')
+#2 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahSakit/imag...')
+#3 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-health/rumahSakit/images/title-icon-white.png
+HTTP_REFERER=http://localhost/e-health/rumahSakit/rumahSakit?idrumkit=1
+---
+2018/02/13 14:52:49 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "ajax-load". in E:\xampp\htdocs\Yiix\framework\web\CController.php:483
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CController.php(270): CController->missingAction('ajax-load')
+#1 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(282): CController->run('ajax-load')
+#2 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahSakit/ajax...')
+#3 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-health/rumahSakit/ajax-load/bootstrap-parent-modal.html
+HTTP_REFERER=http://localhost/e-health/rumahSakit/rumahSakit?idrumkit=1
+---
+2018/02/13 14:52:49 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "images". in E:\xampp\htdocs\Yiix\framework\web\CController.php:483
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CController.php(270): CController->missingAction('images')
+#1 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(282): CController->run('images')
+#2 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahSakit/imag...')
+#3 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-health/rumahSakit/images/wallpaper-1.jpg
+HTTP_REFERER=http://localhost/e-health/rumahSakit/rumahSakit?idrumkit=1
+---
+2018/02/13 14:52:50 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "images/testimoni/6.jpg". in E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('images/testimon...')
+#1 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-health/images/testimoni/6.jpg
+HTTP_REFERER=http://localhost/e-health/rumahSakit/rumahSakit?idrumkit=1
+---
+2018/02/13 14:52:50 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "template". in E:\xampp\htdocs\Yiix\framework\web\CController.php:483
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CController.php(270): CController->missingAction('template')
+#1 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(282): CController->run('template')
+#2 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahSakit/temp...')
+#3 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-health/rumahSakit/template/images/apple-touch-icon-144x144.png
+---
+2018/02/13 14:52:50 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "template". in E:\xampp\htdocs\Yiix\framework\web\CController.php:483
+Stack trace:
+#0 E:\xampp\htdocs\Yiix\framework\web\CController.php(270): CController->missingAction('template')
+#1 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(282): CController->run('template')
+#2 E:\xampp\htdocs\Yiix\framework\web\CWebApplication.php(141): CWebApplication->runController('rumahSakit/temp...')
+#3 E:\xampp\htdocs\Yiix\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 E:\xampp\htdocs\e-health\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-health/rumahSakit/template/images/favicon.png
+---
